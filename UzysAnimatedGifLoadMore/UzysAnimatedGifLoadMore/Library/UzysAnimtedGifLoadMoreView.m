@@ -146,6 +146,7 @@
                 [scrollView removeObserver:self forKeyPath:@"contentOffset"];
                 [scrollView removeObserver:self forKeyPath:@"contentSize"];
                 [scrollView removeObserver:self forKeyPath:@"frame"];
+                [scrollView.layer removeObserver:self forKeyPath:@"bounds"];
                 self.isObserving = NO;
             }
         }
@@ -227,23 +228,24 @@
     else if([keyPath isEqualToString:@"contentSize"])
     {
         NSLog(@"self.frame %@",NSStringFromCGRect(self.scrollView.frame));
-
         [self setNeedsLayout];
         [self setNeedsDisplay];
     }
-//    else if([keyPath isEqualToString:@"self.frame"])
-//    {
-//        [self _setFrameSizeByProgressImage];
-//        
-//        [self setNeedsLayout];
-//        [self setNeedsDisplay];
-//    }
-    else if ([keyPath isEqualToString:@"bounds"])
+    else if([keyPath isEqualToString:@"frame"])
     {
-        [self _setFrameSizeByProgressImage];
         
         [self setNeedsLayout];
         [self setNeedsDisplay];
+    }
+    else if ([keyPath isEqualToString:@"bounds"])
+    {
+        [self setNeedsLayout];
+        [self setNeedsDisplay];
+        if(!CGSizeEqualToSize([change[@"new"] CGRectValue].size,[change[@"old"] CGRectValue].size ))
+        {
+            [self _setFrameSizeByProgressImage];
+        }
+
     }
 }
 - (void)_scrollViewDidScroll:(CGPoint)contentOffset
@@ -389,7 +391,9 @@
                             options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseOut|UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
                              self.scrollView.contentInset = contentInset;
-                             self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x, self.scrollView.contentSize.height - self.scrollView.bounds.size.height+ contentInset.bottom);
+                             if(self.isVariableSize) {
+                                 self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x, self.scrollView.contentSize.height - self.scrollView.bounds.size.height+ contentInset.bottom);
+                             }
                          }
                          completion:^(BOOL finished) {
                              if(handler)
@@ -413,7 +417,7 @@
 
     UIEdgeInsets currentInsets = self.scrollView.contentInset;
     currentInsets.bottom = self.originalBottomInset + self.bounds.size.height + 1.0f;
-    [UIView animateWithDuration:0.3f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.3f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionAllowUserInteraction animations:^{
         self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x, self.scrollView.contentSize.height + currentInsets.bottom - self.scrollView.bounds.size.height);
     } completion:^(BOOL finished) {
         [self _actionTriggeredState];

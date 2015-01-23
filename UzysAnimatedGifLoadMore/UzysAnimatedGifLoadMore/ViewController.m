@@ -258,7 +258,7 @@
         [self.tableView addLoadMoreActionHandler:^{
             [weakSelf insertRowAtBottom];
             
-        } ProgressImagesGifName:@"farmtruck@2x.gif" LoadingImagesGifName:@"bounce_sammy@2x.gif" ProgressScrollThreshold:60 LoadingImageFrameRate:30];
+        } ProgressImagesGifName:@"farmtruck@2x.gif" LoadingImagesGifName:@"nevertoolate@2x.gif" ProgressScrollThreshold:60 LoadingImageFrameRate:30];
         self.useActivityIndicator = NO;
         
         

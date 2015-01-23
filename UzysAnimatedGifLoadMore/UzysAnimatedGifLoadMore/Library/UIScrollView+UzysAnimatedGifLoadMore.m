@@ -139,8 +139,8 @@ static char UIScrollViewLoadMoreView;
         {
             [self addObserver:self.loadMoreView forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
             [self addObserver:self.loadMoreView forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
-//            [self addObserver:self.loadMoreView forKeyPath:@"self.frame" options:NSKeyValueObservingOptionNew context:nil];
-            [self.layer addObserver:self.loadMoreView forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew context:NULL];
+            [self addObserver:self.loadMoreView forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
+            [self.layer addObserver:self.loadMoreView forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
             self.loadMoreView.isObserving = YES;
         }
     }
@@ -150,7 +150,7 @@ static char UIScrollViewLoadMoreView;
         {
             [self removeObserver:self.loadMoreView forKeyPath:@"contentOffset"];
             [self removeObserver:self.loadMoreView forKeyPath:@"contentSize"];
-//            [self removeObserver:self.loadMoreView forKeyPath:@"self.frame"];
+            [self removeObserver:self.loadMoreView forKeyPath:@"frame"];
             [self.layer removeObserver:self.loadMoreView forKeyPath:@"bounds"];
             self.loadMoreView.isObserving = NO;
         }
