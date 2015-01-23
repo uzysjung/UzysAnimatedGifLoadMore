@@ -14,6 +14,9 @@ Add LoadMore using animated GIF to any scrollView with just simple code
 * Support CocoaPods.
 * ARC Only (if your project doesn't use ARC , Project -> Build Phases Tab -> Compile Sources Section -> Double Click on the file name Then add -fno-objc-arc to the popup window.)
 
+## Installation
+1. UzysAnimatedGifLoadMore in your app is via CocoaPods.
+2. Copy over the files libary folder to your project folder
 ## Usage
 ###Import header.
 
@@ -77,6 +80,9 @@ adding addLoadMoreActionHandler
                     ProgressScrollThreshold:(NSInteger)threshold
                LoadingImagesFrameRate:(NSInteger)lframe;
 ```
+
+## Information
+ - Please Visit [UzysAnimatedGifPullToRefresh](https://github.com/uzysjung/UzysAnimatedGifPullToRefresh)  
 
 ## Contact
  - [Uzys.net](http://uzys.net)
