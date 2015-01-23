@@ -7,10 +7,6 @@
 //
 /*
  resource from
- https://dribbble.com/shots/543804-Wikiweb-Article-Loading-Animation?list=searches&tag=load_more&offset=116
-
- https://dribbble.com/shots/1446794-In-space-no-one-can-hear-you-cry?list=searches&tag=gif&offset=14
-
  
  https://dribbble.com/shots/1853041-Slack-Loader?list=searches&tag=load_more&offset=474
  https://dribbble.com/shots/1813893-Bouncing-Sammy?list=searches&tag=load_more&offset=563
@@ -19,9 +15,8 @@
  https://dribbble.com/shots/1559273-Its-never-too-late?list=searches&tag=gif&offset=143
  https://dribbble.com/shots/1574930-Farm-Truck-animated?list=searches&tag=gif&offset=273
  https://dribbble.com/shots/406120--GIF-Superbowl-XLVI?list=searches&tag=gif&offset=27
- 
+
  http://ezgif.com/
- https://dribbble.com/shots/1187141-Wired-UK-Big-Ideas-GIF?list=searches&tag=gif&offset=93
 
  */
 #import "UIScrollView+UzysAnimatedGifLoadMore.h"

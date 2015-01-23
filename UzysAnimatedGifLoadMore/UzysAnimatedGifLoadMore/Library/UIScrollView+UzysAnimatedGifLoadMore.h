@@ -44,5 +44,4 @@
 
 - (void)triggerLoadMoreActionHandler;
 - (void)stopLoadMoreAnimation;
-
 @end
