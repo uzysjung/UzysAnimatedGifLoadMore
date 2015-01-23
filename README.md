@@ -6,7 +6,7 @@ UzysAnimatedGifPullToRefresh
 
 Add LoadMore using animated GIF to any scrollView with just simple code
 
-![Screenshot](https://raw.githubusercontent.com/uzysjung/UzysAnimatedGifPullToRefresh/master/UzysAnimatedGifPullToRefresh.gif)
+![Screenshot](https://raw.githubusercontent.com/uzysjung/UzysAnimatedGifLoadMore/master/UzysAnimatedGifLoadMore.gif)
 
 **UzysAnimatedGifLoadMore features:**
 
