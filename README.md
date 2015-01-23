@@ -1,4 +1,4 @@
-UzysAnimatedGifPullToRefresh
+UzysAnimatedGifLoadMore
 ============================
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/uzysjung/UzysAnimatedGifLoadMore/master/LICENSE)
 [![CocoaPods](https://img.shields.io/cocoapods/v/UzysAnimatedGifPullToRefresh.svg?style=flat)](https://github.com/uzysjung/UzysAnimatedGifLoadMore)
