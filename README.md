@@ -1,7 +1,7 @@
 UzysAnimatedGifLoadMore
 ============================
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/uzysjung/UzysAnimatedGifLoadMore/master/LICENSE)
-[![CocoaPods](https://img.shields.io/cocoapods/v/UzysAnimatedGifPullToRefresh.svg?style=flat)](https://github.com/uzysjung/UzysAnimatedGifLoadMore)
+[![CocoaPods](https://img.shields.io/cocoapods/v/UzysAnimatedGifLoadMore.svg?style=flat)](https://github.com/uzysjung/UzysAnimatedGifLoadMore)
 [![License MIT](https://img.shields.io/badge/contact-@Uzysjung-blue.svg?style=flat)](http://uzys.net)
 
 Add LoadMore using animated GIF to any scrollView with just simple code
