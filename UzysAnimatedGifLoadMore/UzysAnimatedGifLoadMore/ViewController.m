@@ -52,7 +52,8 @@
     
     __weak typeof(self) weakSelf =self;
     [self.tableView addLoadMoreActionHandler:^{
-        [weakSelf insertRowAtBottom];
+        typeof(self) strongSelf = weakSelf;
+        [strongSelf insertRowAtBottom];
         
     } ProgressImagesGifName:@"farmTruck@2x.gif" LoadingImagesGifName:@"bounce_sammy@2x.gif" ProgressScrollThreshold:30 LoadingImageFrameRate:30];
     
@@ -104,17 +105,17 @@
     int64_t delayInSeconds = 2.8;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        typeof(self) strongSelf = weakSelf;
+        NSInteger rows = [strongSelf.tableView numberOfRowsInSection:0];
+        [strongSelf.tableView beginUpdates];
+        [strongSelf.pData addObject:[NSDate date]];
         
-        NSInteger rows = [weakSelf.tableView numberOfRowsInSection:0];
-        [weakSelf.tableView beginUpdates];
-        [weakSelf.pData addObject:[NSDate date]];
-        
-        [weakSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:rows inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [weakSelf.tableView endUpdates];
+        [strongSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:rows inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [strongSelf.tableView endUpdates];
         
         //Stop PullToRefresh Activity Animation
-        [weakSelf.tableView stopLoadMoreAnimation];
-        weakSelf.isLoading =NO;
+        [strongSelf.tableView stopLoadMoreAnimation];
+        strongSelf.isLoading =NO;
     });
 }
 
@@ -216,7 +217,8 @@
             [progress addObject:[UIImage imageNamed:fname]];
         }
         [self.tableView addLoadMoreActionHandler:^{
-            [weakSelf insertRowAtBottom];
+            typeof(self) strongSelf = weakSelf;
+            [strongSelf insertRowAtBottom];
             
         } ProgressImages:progress ProgressScrollThreshold:60];
         self.useActivityIndicator = YES;
@@ -240,7 +242,8 @@
             [loading addObject:[UIImage imageNamed:fname]];
         }
         [self.tableView addLoadMoreActionHandler:^{
-            [weakSelf insertRowAtBottom];
+            typeof(self) strongSelf = weakSelf;
+            [strongSelf insertRowAtBottom];
             
         } ProgressImages:progress LoadingImages:loading ProgressScrollThreshold:70 LoadingImagesFrameRate:30];
         self.useActivityIndicator = YES;
@@ -251,7 +254,8 @@
         
         __weak typeof(self) weakSelf =self;
         [self.tableView addLoadMoreActionHandler:^{
-            [weakSelf insertRowAtBottom];
+            typeof(self) strongSelf = weakSelf;
+            [strongSelf insertRowAtBottom];
             
         } ProgressImagesGifName:@"farmtruck@2x.gif" LoadingImagesGifName:@"nevertoolate@2x.gif" ProgressScrollThreshold:60 LoadingImageFrameRate:30];
         self.useActivityIndicator = NO;
@@ -264,7 +268,8 @@
         
         __weak typeof(self) weakSelf =self;
         [self.tableView addLoadMoreActionHandler:^{
-            [weakSelf insertRowAtBottom];
+            typeof(self) strongSelf = weakSelf;
+            [strongSelf insertRowAtBottom];
             
         } ProgressImagesGifName:@"inbox@2x.gif" LoadingImagesGifName:@"fruit_animation@2x.gif" ProgressScrollThreshold:70 LoadingImageFrameRate:30];
         self.useActivityIndicator = NO;
@@ -297,7 +302,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskAll;
 }
