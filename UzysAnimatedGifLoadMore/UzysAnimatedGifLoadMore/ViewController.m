@@ -107,10 +107,16 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         typeof(self) strongSelf = weakSelf;
         NSInteger rows = [strongSelf.tableView numberOfRowsInSection:0];
-        [strongSelf.tableView beginUpdates];
         [strongSelf.pData addObject:[NSDate date]];
+     
+
+        [strongSelf.tableView beginUpdates];
+        NSMutableArray *Indexpaths = [NSMutableArray array];
+        for (int i=0 ; i<1 ; i++) {
+            [Indexpaths addObject:[NSIndexPath indexPathForRow:rows+i inSection:0]];
+        }
         
-        [strongSelf.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:rows inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [strongSelf.tableView insertRowsAtIndexPaths:Indexpaths withRowAnimation:UITableViewRowAnimationAutomatic];
         [strongSelf.tableView endUpdates];
         
         //Stop PullToRefresh Activity Animation

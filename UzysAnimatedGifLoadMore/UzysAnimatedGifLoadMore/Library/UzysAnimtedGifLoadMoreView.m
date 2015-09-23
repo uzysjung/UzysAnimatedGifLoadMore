@@ -30,7 +30,8 @@
 
 - (void)_setFrameSizeByProgressImage;
 - (void)_setFrameSizeByLoadingImage;
-- (void)_setScrollViewContentInset:(UIEdgeInsets)contentInset handler:(loadMoreActionHandler)handler animation:(BOOL)animation;
+
+- (void)_setScrollViewContentInset:(UIEdgeInsets)contentInset handler:(loadMoreActionHandler)handler animation:(BOOL)animation isReset:(BOOL)isReset;
 
 - (void)_setupScrollViewContentInsetForLoadingIndicator:(loadMoreActionHandler)handler animation:(BOOL)animation;
 - (void)_resetScrollViewContentInset:(loadMoreActionHandler)handler animation:(BOOL)animation;
@@ -227,7 +228,7 @@
     }
     else if([keyPath isEqualToString:@"contentSize"])
     {
-        NSLog(@"self.frame %@",NSStringFromCGRect(self.scrollView.frame));
+        NSLog(@"self.scrollView.frame %@",NSStringFromCGRect(self.scrollView.frame));
         [self setNeedsLayout];
         [self setNeedsDisplay];
     }
@@ -369,20 +370,20 @@
 #pragma mark - ScrollViewInset
 - (void)_setupScrollViewContentInsetForLoadingIndicator:(loadMoreActionHandler)handler animation:(BOOL)animation
 {
-    
     UIEdgeInsets currentInsets = self.scrollView.contentInset;
     float idealOffset = self.originalBottomInset + self.bounds.size.height + 2 ;
     currentInsets.bottom = idealOffset;
     
-    [self _setScrollViewContentInset:currentInsets handler:handler animation:animation];
+    [self _setScrollViewContentInset:currentInsets handler:handler animation:animation isReset:NO];
 }
 - (void)_resetScrollViewContentInset:(loadMoreActionHandler)handler animation:(BOOL)animation
 {
     UIEdgeInsets currentInsets = self.scrollView.contentInset;
     currentInsets.bottom = self.originalBottomInset;
-    [self _setScrollViewContentInset:currentInsets handler:handler animation:animation];
+    [self _setScrollViewContentInset:currentInsets handler:handler animation:animation isReset:YES];
+    
 }
-- (void)_setScrollViewContentInset:(UIEdgeInsets)contentInset handler:(loadMoreActionHandler)handler animation:(BOOL)animation
+- (void)_setScrollViewContentInset:(UIEdgeInsets)contentInset handler:(loadMoreActionHandler)handler animation:(BOOL)animation isReset:(BOOL)isReset
 {
     if(animation)
     {
@@ -391,7 +392,7 @@
                             options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseOut|UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
                              self.scrollView.contentInset = contentInset;
-                             if(self.isVariableSize) {
+                             if(self.isVariableSize && !isReset) {
                                  self.scrollView.contentOffset = CGPointMake(self.scrollView.contentOffset.x, self.scrollView.contentSize.height - self.scrollView.bounds.size.height+ contentInset.bottom);
                              }
                          }
