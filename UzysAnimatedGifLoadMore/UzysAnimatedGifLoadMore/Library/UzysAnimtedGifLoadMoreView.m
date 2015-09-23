@@ -385,6 +385,7 @@
 }
 - (void)_setScrollViewContentInset:(UIEdgeInsets)contentInset handler:(loadMoreActionHandler)handler animation:(BOOL)animation isReset:(BOOL)isReset
 {
+
     if(animation)
     {
         [UIView animateWithDuration:0.3
