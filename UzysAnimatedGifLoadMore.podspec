@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "UzysAnimatedGifLoadMore"
-  s.version      = "0.9.1"
+  s.version      = "0.9.2"
   s.summary      = "Add LoadMore using animated GIF to any scrollView with just simple code"
   s.author       = { "Uzysjung" => "uzysjung@gmail.com" }
 
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.license     = { :type => "MIT", :file => "LICENSE" }
   
   s.platform     = :ios
-  s.source       = { :git => "https://github.com/uzysjung/UzysAnimatedGifLoadMore.git", :tag => "0.9.1" }
+  s.source       = { :git => "https://github.com/uzysjung/UzysAnimatedGifLoadMore.git", :tag => "0.9.2" }
   s.requires_arc = true
   s.source_files = 'UzysAnimatedGifLoadMore/UzysAnimatedGifLoadMore/Library'
   s.public_header_files = 'UzysAnimatedGifLoadMore/UzysAnimatedGifLoadMore/Library/*.h'
